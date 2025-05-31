@@ -9,15 +9,25 @@ export const HomePage = () => {
     const fetchJoke = async () => {
       const response = await fetch('http://localhost:4000/api/jokes');
       const responseData = await response.json();
-      setJokes(responseData.data.cz);
+      setJokes(responseData.data);
+      console.log(responseData.data);
     };
     fetchJoke();
-    console.log(jokes);
   }, []);
 
-  return (
-    <div className="container">
-      <Joke />
-    </div>
-  );
+  if (jokes.length === 0) return 'Loading data...';
+  else
+    return jokes.map((joke) => {
+      return (
+        <div key={joke.id} className="container">
+          <Joke
+            userAvatar={joke.avatar}
+            userName={joke.name}
+            text={joke.text}
+            likes={joke.likes}
+            dislikes={joke.dislikes}
+          />
+        </div>
+      );
+    });
 };
