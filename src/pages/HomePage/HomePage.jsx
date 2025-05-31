@@ -14,19 +14,26 @@ export const HomePage = () => {
     fetchJoke();
   }, []);
 
-  if (jokes.length === 0) return 'Loading data...';
-  else
-    return jokes.map((joke) => {
-      return (
-        <div key={joke.id} className="container">
-          <Joke
-            userAvatar={joke.avatar}
-            userName={joke.name}
-            text={joke.text}
-            likes={joke.likes}
-            dislikes={joke.dislikes}
-          />
-        </div>
-      );
-    });
+  return (
+    <div className="container">
+      {' '}
+      {jokes.length === 0 ? (
+        <div className="loading__text">Loading data...</div>
+      ) : (
+        jokes.map((joke) => {
+          return (
+            <div key={joke.id}>
+              <Joke
+                userAvatar={joke.avatar}
+                userName={joke.name}
+                text={joke.text}
+                likes={joke.likes}
+                dislikes={joke.dislikes}
+              />
+            </div>
+          );
+        })
+      )}{' '}
+    </div>
+  );
 };

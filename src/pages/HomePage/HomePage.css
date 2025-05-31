@@ -1,1 +1,8 @@
-
+.loading__text {
+  background-color: cornflowerblue;
+  color: white;
+  border-radius: 1rem;
+  padding: 1.5rem 2rem;
+  margin: 0;
+  line-height: 150%;
+}
