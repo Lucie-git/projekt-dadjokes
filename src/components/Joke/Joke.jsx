@@ -6,11 +6,11 @@ export const Joke = ({ userAvatar, userName, text, likes, dislikes }) => {
   const [likesDown, setLikesDown] = useState(dislikes);
 
   const handleClickLike = () => {
-    setLikesUp(likesUp + 1);
+    setLikesUp((prev) => prev + 1);
   };
 
   const handleClickDislike = () => {
-    setLikesDown(likesDown + 1);
+    setLikesDown((prev) => prev + 1);
   };
 
   return (
